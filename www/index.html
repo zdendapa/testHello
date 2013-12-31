@@ -1,43 +1,166 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
-<html>
-    <head>
+<html>  
+    <head>  
         <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-        <div class="app">
-            <h1>PhoneGap</h1>
-            <div id="deviceready" class="blink">
-                <p class="event listening">Connecting to Device Zeddd!</p>
-                <p class="event received">Device is Ready</p>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+        <title>Fajn sváča</title>    
+        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>  
+        <script src="svaca/js/scripts.js"></script>
+    </head>  
+    <body>  
+        
+        <style type="text/css">
+            /* Phone @media handheld { */
+
+
+
+
+            html, body {
+
+                font: 12px/15px sans-serif;
+                background: #ff5;
+                padding: 0px;
+                color: #000;
+                margin: 0;
+                max-width: 540px;
+            }
+            #sidebar, #footer {
+                display: none;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                font-weight: normal;
+            }
+            img { 
+                max-width: 540px;
+            }
+            .center {
+                width: 100% !important;
+                text-align: center;
+            }
+            a:link, a:visited {
+                text-decoration: underline;
+                color: #0000CC;
+            }
+            a:hover, a:active {
+                text-decoration: underline;
+                color: #660066;
+            }
+            
+            /* widgets */
+            .btnQuatro {
+                width: 236px;
+                height: 238px;
+                display: inline-block;
+                
+            }
+            
+            .btnKosik {
+                width: 120px;
+                height: 65px;
+                display: block;
+                
+            }
+            .btnBack {
+                width: 102px;
+                height: 65px;
+                display: block;
+                
+            }                
+
+            
+            /* transitions */
+            #pages {
+                position: relative;
+            }
+            #pages > div {
+                display:none;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+            }
+            
+            #pages > div.current {
+                display: block;
+            }   
+
+            .in, .out {
+                -webkit-animation-timing-function: ease-in-out;
+                    -webkit-animation-duration: 300ms;
+                }
+                @-webkit-keyframes fade-in {
+                    from { opacity: 0; }
+                    to { opacity: 1; } 
+                }
+                .fade.in {
+                -webkit-animation-name: fade-in;
+                    z-index: 10;
+                }
+                .fade.out {
+                z-index: 0;
+            }
+
+            /* iPhone-specific styles */
+            @media only screen and (max-device-width: 480px) { 
+                
+                html {
+                    -webkit-text-size-adjust: none;
+                    }
+
+                }  
+        </style>
+        
+        <div id="pages">
+            <div id="page-home" class="page-home current">
+                <div style="position: absolute; left: 34px;top: 178px; ">
+                    <a href="#page-koupit" class="btnQuatro"></a>
+                    <a href="#page-koupit" class="btnQuatro"></a>                    
+                    <div>
+                        <a href="#page-koupit" class="btnQuatro"></a>
+                        <a href="#page-koupit" class="btnQuatro"></a>                                      
+                    </div>
+                </div>
+                <img src="svaca/imagesTest/homeScreen.png">
+                
+
             </div>
+
+
+            <div id="page-koupit" class="page-koupit">
+                <img src="svaca/imagesTest/koupitScreen.png">
+                <div style="position: absolute; left: 0px;top: 0px; ">
+                    <a href="#page-home" class="btnBack"></a>                  
+                </div>
+                <div style="position: absolute; left: 34px;top: 178px; ">
+                    <a href="#page-vybratSvacu" class="btnQuatro"></a>
+                    <a href="#page-koupit" class="btnQuatro"></a>                    
+                    <div>
+                        <a href="#page-koupit" class="btnQuatro"></a>
+                        <a href="#page-koupit" class="btnQuatro"></a>                                      
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div id="page-vybratSvacu" class="page-vybratSvacu">
+                <div style="position: absolute; left: 0px;top: 0px; ">
+                    <a href="#page-koupit" class="btnBack"></a>                  
+                </div>
+                <img src="svaca/imagesTest/vybratSvacuScreen.png">
+                <div style="position: absolute; left: 268px;top: 0px; ">
+                    <a href="#page-kosik" class="btnKosik"></a>                  
+                </div>
+            </div>           
+
+
+            <div id="page-kosik" class="page-kosik">
+                <div style="position: absolute; left: 0px;top: 0px; ">
+                    <a href="#page-vybratSvacu" class="btnBack"></a>                  
+                </div>                
+                <img src="svaca/imagesTest/kosikScreen.png">
+            </div>              
+            
         </div>
-        <script type="text/javascript" src="phonegap.js"></script>
-        <script type="text/javascript" src="js/index.js"></script>
-        <script type="text/javascript">
-            app.initialize();
-        </script>
     </body>
 </html>
